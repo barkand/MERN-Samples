@@ -40,6 +40,9 @@ async function FillWallet(deviceType: string) {
   //account
   await eth.getAccounts().then((result: any) => (_wallet.account = result[0]));
 
+  if (_wallet.connected === true)
+    localStorage.setItem("swr-user", _wallet.account ?? "");
+
   return _wallet;
 }
 
@@ -85,10 +88,10 @@ export async function Login() {
         console.error(error);
       }
     });
-
-  return _wallet || DefaultWallet;
+  // return _wallet || DefaultWallet;
 }
 
 export async function Logout() {
-  return DefaultWallet;
+  localStorage.removeItem("swr-user");
+  // return DefaultWallet;
 }

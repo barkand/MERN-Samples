@@ -7,14 +7,22 @@ import "./css/App.css";
 
 function App() {
   const [connect, setConnect] = React.useState(false);
+  const [walletAccount, setWalletAccount] = React.useState("0x");
   // const { user, loading, loggedOut, mutate } = useUser();
 
   const walletClick = async () => {
     if (connect) {
-      Logout();
+      let _logout = await Logout();
+      setConnect(false);
+
       // mutate(() => null); // optimistically update the data and revalidate
     } else {
-      Login();
+      let _login = await Login();
+      console.log(_login);
+      if (_login.connected) {
+        setWalletAccount(_login.account);
+        setConnect(true);
+      }
       // mutate(); // after logging in, we revalidate the SWR
     }
   };
@@ -27,6 +35,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <button onClick={walletClick}>{connect ? "Logout" : "Login"}</button>
+        <p>{connect ? walletAccount : ""}</p>
         {/* <p>{loading ? "loading..." : user && connect ? user.name : ""}</p> */}
       </header>
     </div>

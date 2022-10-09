@@ -2,6 +2,7 @@ import Web3 from "web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 let DefaultWallet = {
+  library: null,
   networkId: 0,
   account: "0x",
   connected: false,
@@ -28,7 +29,8 @@ async function FillWallet(deviceType: string) {
     web3Provider = new Web3.providers.HttpProvider("http://localhost:8545");
   }
 
-  const _wallet = JSON.parse(JSON.stringify(DefaultWallet));
+  const _wallet = JSON.parse(JSON.stringify(DefaultWallet)); //library
+  _wallet.library = new Web3(web3Provider);
 
   let eth = _wallet.library.eth;
   _wallet.connected = true;

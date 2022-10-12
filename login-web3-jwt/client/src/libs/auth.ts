@@ -40,8 +40,25 @@ async function FillWallet(deviceType: string) {
   //account
   await eth.getAccounts().then((result: any) => (_wallet.account = result[0]));
 
-  if (_wallet.connected === true)
-    localStorage.setItem("swr-user", _wallet.account ?? "");
+  if (_wallet.connected === true) {
+    //fetch login
+    let _data: any = await fetch("http://localhost:4000/api/user/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: _wallet.account,
+      }),
+    })
+      .then((res) => res.json())
+      .then((d) => d)
+      .catch((err) => console.log(err));
+
+    if (_data.connected === true) {
+      let _token: string = _data.token;
+      localStorage.setItem("swr-user", _wallet.account ?? "");
+      localStorage.setItem("token", _token);
+    }
+  }
 
   return _wallet;
 }
@@ -88,10 +105,24 @@ export async function Login() {
         console.error(error);
       }
     });
-  // return _wallet || DefaultWallet;
 }
 
 export async function Logout() {
+  //fetch logout
+  let _username: string = localStorage.getItem("swr-user") ?? "";
+  if (_username === "") return;
+
+  let _data: any = await fetch("http://localhost:4000/api/user/logout", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: _username,
+    }),
+  })
+    .then((res) => res.json())
+    .then((d) => d)
+    .catch((err) => console.log(err));
+
   localStorage.removeItem("swr-user");
-  // return DefaultWallet;
+  localStorage.removeItem("token");
 }

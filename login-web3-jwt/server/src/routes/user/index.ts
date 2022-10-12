@@ -10,11 +10,13 @@ UserRouters.get("/", (req, res) => {
     `
       /login
       /logout
+      /user
     `
   );
 });
 
 UserRouters.post(`/login`, userController.login);
 UserRouters.post(`/logout`, userController.logout);
+UserRouters.post(`/user`, userController.verifyUser);
 
 export default UserRouters;

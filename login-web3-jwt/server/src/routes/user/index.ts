@@ -15,5 +15,6 @@ UserRouters.get("/", (req, res) => {
 });
 
 UserRouters.post(`/login`, userController.login);
+UserRouters.post(`/logout`, userController.logout);
 
 export default UserRouters;

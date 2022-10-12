@@ -42,13 +42,16 @@ async function FillWallet(deviceType: string) {
 
   if (_wallet.connected === true) {
     //fetch login
-    let _data: any = await fetch("http://localhost:4000/api/user/login", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: _wallet.account,
-      }),
-    })
+    let _data: any = await fetch(
+      `${import.meta.env.VITE_SERVER_PATH}user/login`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: _wallet.account,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((d) => d)
       .catch((err) => console.log(err));
@@ -112,13 +115,16 @@ export async function Logout() {
   let _username: string = localStorage.getItem("swr-user") ?? "";
   if (_username === "") return;
 
-  let _data: any = await fetch("http://localhost:4000/api/user/logout", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: _username,
-    }),
-  })
+  let _data: any = await fetch(
+    `${import.meta.env.VITE_SERVER_PATH}user/logout`,
+    {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: _username,
+      }),
+    }
+  )
     .then((res) => res.json())
     .then((d) => d)
     .catch((err) => console.log(err));

@@ -23,6 +23,7 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/jsonwebtoken": "^8.5.9"
   }
 }

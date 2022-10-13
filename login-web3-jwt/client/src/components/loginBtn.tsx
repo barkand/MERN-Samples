@@ -1,7 +1,7 @@
 import React from "react";
 
-import useUser from "../libs/use-user";
-import { Login, Logout } from "../libs/auth";
+import useUser from "./libs/use-user";
+import { Login, Logout } from "./libs/auth";
 
 function LoginBtn() {
   const { user, loading, loggedOut, mutate } = useUser();

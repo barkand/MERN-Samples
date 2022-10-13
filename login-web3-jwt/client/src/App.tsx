@@ -1,6 +1,6 @@
 import React from "react";
 
-import LoginBtn from "./components/login";
+import LoginBtn from "./components/loginBtn";
 import "./css/App.css";
 
 function App() {

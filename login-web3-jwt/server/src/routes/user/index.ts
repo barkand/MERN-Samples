@@ -11,6 +11,7 @@ UserRouters.get("/", (req, res) => {
       /login
       /logout
       /user
+      /refresh
     `
   );
 });
@@ -18,5 +19,6 @@ UserRouters.get("/", (req, res) => {
 UserRouters.post(`/login`, userController.login);
 UserRouters.post(`/logout`, userController.logout);
 UserRouters.post(`/user`, userController.verifyUser);
+UserRouters.post(`/refresh`, userController.refreshUser);
 
 export default UserRouters;

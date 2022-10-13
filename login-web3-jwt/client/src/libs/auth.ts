@@ -57,9 +57,9 @@ async function FillWallet(deviceType: string) {
       .catch((err) => console.log(err));
 
     if (_data.connected === true) {
-      let _token: string = _data.token;
-      localStorage.setItem("swr-user", _wallet.account ?? "");
-      localStorage.setItem("token", _token);
+      localStorage.setItem("user", _wallet.account);
+      localStorage.setItem("token", _data.token);
+      localStorage.setItem("refresh", _data.refresh);
     }
   }
 
@@ -112,7 +112,7 @@ export async function Login() {
 
 export async function Logout() {
   //fetch logout
-  let _username: string = localStorage.getItem("swr-user") ?? "";
+  let _username: string = localStorage.getItem("user") ?? "";
   if (_username === "") return;
 
   let _data: any = await fetch(
@@ -129,6 +129,7 @@ export async function Logout() {
     .then((d) => d)
     .catch((err) => console.log(err));
 
-  localStorage.removeItem("swr-user");
+  localStorage.removeItem("user");
   localStorage.removeItem("token");
+  localStorage.removeItem("refresh");
 }

@@ -1,19 +1,19 @@
-import { createToken, verifyToken } from "./jwt";
+import { createToken, verifyToken, refreshToken } from "./jwt";
 import { SaveUser } from "../database/business/user/auth";
 
 class UserController {
   login = async (req: any, res: any) => {
     let { username } = req.body;
-    let { token, refreshToken } = await createToken(username);
+    let { token, refresh } = await createToken(username);
 
     try {
-      await SaveUser(username, token, refreshToken);
+      await SaveUser(username, token, refresh);
 
       res.status(200).send({
         connected: true,
         user: username,
         token: token,
-        refreshToken: refreshToken,
+        refresh: refresh,
       });
     } catch (err: any) {
       res.status(err.status).send({
@@ -30,7 +30,6 @@ class UserController {
 
       res.status(200).send({
         connected: false,
-        user: username,
       });
     } catch (err: any) {
       res.status(err.status).send({
@@ -40,20 +39,50 @@ class UserController {
   };
 
   verifyUser = async (req: any, res: any) => {
-    let { username, token, refreshToken } = req.body;
+    let { username, token } = req.body;
 
     try {
-      await verifyToken(res, token);
+      let result = await verifyToken(token);
+      if (result.code !== 200) {
+        await SaveUser(username, "", "");
+        res.status(result.code).send({
+          connected: false,
+          message: result.msg,
+        });
+      }
 
       res.status(200).send({
         connected: true,
-        user: username,
       });
     } catch (err: any) {
       res.status(err.status).send({
         connected: false,
       });
     }
+  };
+
+  refreshUser = async (req: any, res: any) => {
+    let { username, refresh } = req.body;
+
+    try {
+      let result = await refreshToken(username, refresh);
+      if (result.code !== 200) {
+        await SaveUser(username, "", "");
+
+        res.status(result.code).send({
+          connected: false,
+          message: result.msg,
+        });
+      }
+
+      await SaveUser(username, result.token, refresh);
+
+      res.status(200).send({
+        connected: true,
+        user: username,
+        token: result.token,
+      });
+    } catch (err: any) {}
   };
 }
 

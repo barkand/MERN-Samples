@@ -3,10 +3,10 @@ let userFetcher = async () => {
   // sleep 500
   await new Promise((res) => setTimeout(res, 500));
 
-  if (localStorage.getItem("swr-user") !== null) {
+  if (localStorage.getItem("user") !== null) {
     // authorized
     return {
-      name: localStorage.getItem("swr-user"),
+      name: localStorage.getItem("user"),
     };
   }
 

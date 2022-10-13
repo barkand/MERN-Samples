@@ -1,6 +1,8 @@
 import Web3 from "web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
+import Context from "../../context";
+
 let DefaultWallet = {
   library: null,
   networkId: 0,
@@ -57,9 +59,11 @@ async function FillWallet(deviceType: string) {
       .catch((err) => console.log(err));
 
     if (_data.connected === true) {
-      localStorage.setItem("user", _wallet.account);
-      localStorage.setItem("token", _data.token);
-      localStorage.setItem("refresh", _data.refresh);
+      Context.setItems({
+        user: _wallet.account,
+        token: _data.token,
+        refresh: _data.refresh,
+      });
     }
   }
 
@@ -112,7 +116,7 @@ export async function Login() {
 
 export async function Logout() {
   //fetch logout
-  let _username: string = localStorage.getItem("user") ?? "";
+  let _username: string = Context.getItem("user") ?? "";
   if (_username === "") return;
 
   let _data: any = await fetch(
@@ -129,7 +133,5 @@ export async function Logout() {
     .then((d) => d)
     .catch((err) => console.log(err));
 
-  localStorage.removeItem("user");
-  localStorage.removeItem("token");
-  localStorage.removeItem("refresh");
+  Context.removeItems(["user", "token", "refresh"]);
 }

@@ -1,12 +1,14 @@
+import Context from "../../context";
+
 // mock the user api
 let userFetcher = async () => {
   // sleep 500
   await new Promise((res) => setTimeout(res, 500));
 
-  if (localStorage.getItem("user") !== null) {
+  if (Context.getItem("user") !== null) {
     // authorized
     return {
-      name: localStorage.getItem("user"),
+      name: Context.getItem("user"),
     };
   }
 

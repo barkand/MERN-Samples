@@ -14,7 +14,7 @@ export default function DarkMode() {
   const [newMode, setNewMode] = React.useState("dark");
 
   React.useEffect(() => {
-    if (loading !== undefined && newMode !== mode) setNewMode(mode);
+    if (loading === false && newMode !== mode) setNewMode(mode);
   }, [mode]);
 
   React.useEffect(() => {

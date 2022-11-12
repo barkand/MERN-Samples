@@ -2,14 +2,24 @@
 
 ---
 
-### Login:
+### 🔒️ Login
 
-    Login-Vite-SWR
+[Login-Vite-SWR](https://github.com/barkand/MERN-Samples/tree/main/login-vite-swr)
 
-    Login-Web3
+![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-vite-swr/demo.gif)
 
-    Login-Web3-jwt
+[Login-Web3](https://github.com/barkand/MERN-Samples/tree/main/login-web3)
 
-### Dark Mode:
+![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-web3/demo.gif)
 
-    Dark-Mode-swr
+[Login-Web3-jwt](https://github.com/barkand/MERN-Samples/tree/main/login-web3-jwt)
+
+![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-web3-jwt/demo.gif)
+
+---
+
+### 🌙 Dark Mode
+
+[Dark-Mode-swr](https://github.com/barkand/MERN-Samples/tree/main/dark-mode-swr)
+
+![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/dark-mode-swr/demo.gif)

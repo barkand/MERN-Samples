@@ -16,9 +16,9 @@
 
 ![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-web3-jwt/demo.gif)
 
-[Login-Google-oAuth](https://github.com/barkand/MERN-Samples/tree/main/login-google-oauth)
+[Login-oAuth-Google](https://github.com/barkand/MERN-Samples/tree/main/login-oauth-google)
 
-![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-google-oauth/demo.gif)
+![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-oauth-google/demo.gif)
 
 ---
 

@@ -27,3 +27,9 @@
 [Dark-Mode-swr](https://github.com/barkand/MERN-Samples/tree/main/dark-mode-swr)
 
 ![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/dark-mode-swr/demo.gif)
+
+---
+
+### 🈸 Multilingual
+
+[Multilingual-i18n](https://github.com/barkand/MERN-Samples/tree/main/multilingual-i18n)

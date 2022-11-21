@@ -20,6 +20,8 @@
 
 ![demo](https://raw.githubusercontent.com/barkand/MERN-Samples/main/login-oauth-google/demo.gif)
 
+[Vite-Walletconnect](https://github.com/barkand/MERN-Samples/tree/main/vite-Walletconnect)
+
 ---
 
 ### 🌙 Dark Mode
@@ -36,6 +38,6 @@
 
 ---
 
-### 🈸 PWA
+### 📴 PWA
 
 [Vite-PWA](https://github.com/barkand/MERN-Samples/tree/main/vite-pwa)

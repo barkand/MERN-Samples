@@ -7,6 +7,7 @@ import rollupNodePolyFill from "rollup-plugin-node-polyfills";
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
+    exclude: ["web3"],
     esbuildOptions: {
       define: {
         global: "globalThis",
@@ -21,6 +22,9 @@ export default defineConfig({
     },
   },
   build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
     rollupOptions: {
       plugins: [rollupNodePolyFill()],
     },

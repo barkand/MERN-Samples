@@ -33,3 +33,9 @@
 ### 🈸 Multilingual
 
 [Multilingual-i18n](https://github.com/barkand/MERN-Samples/tree/main/multilingual-i18n)
+
+---
+
+### 🈸 PWA
+
+[Vite-PWA](https://github.com/barkand/MERN-Samples/tree/main/vite-pwa)
